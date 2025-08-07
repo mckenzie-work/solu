@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useAuth, UserRole } from "../context/AuthContext";
+import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -12,7 +12,7 @@ const Logo = () => (
   </div>
 );
 
-const AuthTabs: React.FC = () => {
+const Login: React.FC = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
   const [tab, setTab] = useState<'login' | 'signup'>('login');
@@ -42,7 +42,7 @@ const AuthTabs: React.FC = () => {
       if (!identifier || !loginPassword) {
         throw new Error("Please enter your username/phone and password");
       }
-      let role: UserRole = "customer";
+      let role: string = "customer";
       if (
         identifier === "admin" ||
         identifier === "admin@example.com"
@@ -238,4 +238,4 @@ const AuthTabs: React.FC = () => {
   );
 };
 
-export default AuthTabs;
+export default Login;
